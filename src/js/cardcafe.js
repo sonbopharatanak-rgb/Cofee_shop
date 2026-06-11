@@ -1,103 +1,158 @@
+// ទាញយកទិន្នន័យកន្ត្រកចេញពី LocalStorage មកប្រើ
+let cart = JSON.parse(localStorage.getItem('coffee_cart')) || [];
 
-document.addEventListener("DOMContentLoaded", () => {
+// ==========================================
+// ១. មុខងារបង្ហាញកាតផលិតផល (Display Products with Image)
+// ==========================================
+function displayProducts(productsToDisplay = Coffee) {
+    const container = document.getElementById('coffee-container');
+    if (!container) return;
 
-    const coffees = [
-        {
-            name: "The Perfect Mocha Coffee",
-            description: "Espresso mixed with chocolate and steamed milk.",
-            price: "$6",
-            image: "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/the_perfect_mocha_coffee_29100_16x9.jpg"
-        },
-        {
-            name: "Ice Cream",
-            description: "Delicious cold dessert for hot days.milk topping.milk",
-            price: "$4",
-            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ice_Cream_dessert_02.jpg/960px-Ice_Cream_dessert_02.jpg"
-        },
-        {
-            name: "Black Forest Sundae",
-            description: "Chocolate ice cream with cherry topping.milk topping.milk",
-            price: "$5",
-            image: "https://creative-culinary.com/wp-content/uploads/black-forest-ice-cream-2.jpg"
-        },
-        {
-            name: "Iced Coffee",
-            description: "Refreshing coffee served over ice.",
-            price: "$6",
-            image: "https://images.immediate.co.uk/production/volatile/sites/30/2021/05/Iced-Mocha-db3c51a.jpg?quality=90&webp=true&resize=700,636"
-        },
-        {
-            name: "Milk Tea",
-            description: "Sweet milk tea with rich flavor.",
-            price: "$2",
-            image: "https://takestwoeggs.com/wp-content/uploads/2021/04/Brown-Sugar-Milk-Tea-Boba-Recipe-Takestwoeggs-Easy-Asian-Inspired-Recipes-sq.jpg"
-        },
-        {
-            name: "Americano",
-            description: "Espresso diluted with hot water.",
-            price: "$3",
-            image: "https://insanelygoodrecipes.com/wp-content/uploads/2023/06/Hot-Americano-Coffee-with-Beans-480x270.jpg"
-        },
-         {
-            name: "Americano",
-            description: "Espresso diluted with hot water.",
-            price: "$3",
-            image: "https://i.pinimg.com/736x/be/ce/3f/bece3fed8414b5b16a174fca938fc698.jpg"
-        },
-         {
-            name: "Americano",
-            description: "Espresso diluted with hot water.",
-            price: "$3",
-            image: "https://i.pinimg.com/736x/cf/20/0f/cf200fcd889e35ea0911e3195c705f8f.jpg"
-        },
-         {
-            name: "Americano",
-            description: "Espresso diluted with hot water.",
-            price: "$3",
-            image: "https://i.pinimg.com/736x/40/aa/c9/40aac912a751d81b0990775ccc482343.jpg"
-        },
-         {
-            name: "Americano",
-            description: "Espresso diluted with hot water.",
-            price: "$3",
-            image: "https://i.pinimg.com/736x/cb/08/6d/cb086de82f355f44635c879ac73ef866.jpg"
-        },
-         {
-            name: "Americano",
-            description: "Espresso diluted with hot water.",
-            price: "$3",
-            image: "https://i.pinimg.com/736x/f9/c7/7c/f9c77c3fef98a248b9e9b6a586dd222f.jpg"
-        },
-         {
-            name: "Americano",
-            description: "Espresso diluted with hot water.",
-            price: "$3",
-            image: "https://i.pinimg.com/736x/06/76/f3/0676f3bae9184b54ddee40ae51208b7e.jpg"
-        },
-    ];
+    if (productsToDisplay.length === 0) {
+        container.innerHTML = `<p class="text-center text-muted w-100 my-5">No products found in this category.</p>`;
+        return;
+    }
 
-    const container = document.getElementById("coffee-container");
-
-    coffees.forEach(coffee => {
-        container.innerHTML += `
-                    <div class="col-12 col-md-6  col-lg-4">
-                        <div class="card h-100 shadow-sm">
-                            <img src="${coffee.image}" class="card-img-top" alt="${coffee.name}">
-
-                            <div class="card-body">
-                                <h4>${coffee.name}</h4>
-                                <p>${coffee.description}</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">${coffee.price}</span>
-                                    <a href="detail.html" class="btn btn-detail">
-                                        Page Detail
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+    // ហៅទិន្នន័យផលិតផលមកបង្កើតជា HTML Cards ដោយមានរូបភាព `${product.img}` គ្រប់កាត
+    container.innerHTML = productsToDisplay.map(product => `
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden" style="cursor: pointer;" onclick="viewProductDetails(${product.id})">
+                <div style="position: relative; overflow: hidden;">
+                    <img src="${product.img}" class="card-img-top" alt="${product.name}" style="height: 220px; object-fit: cover; transition: transform 0.3s;">
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h6 class="card-title fw-bold text-dark mb-1 text-truncate">${product.name}</h6>
+                        <p class="card-text text-success fw-semibold mb-0">$${product.price.toFixed(2)}</p>
                     </div>
-                `;
-    });
+                    <button class="btn btn-warning w-100 mt-3 fw-bold text-white btn-sm" onclick="addToCart(event, ${product.id})">
+                        <i class="fa-solid fa-cart-plus me-2"></i>Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
 
+// ==========================================
+// ២. មុខងារបើកផ្ទាំង Modal បង្ហាញរូបភាពលម្អិត + QR Code
+// ==========================================
+function viewProductDetails(productId) {
+    const product = Coffee.find(p => p.id === productId);
+    if (!product) return;
+
+    // បញ្ចូលរូបភាព និងព័ត៌មានទៅក្នុង Modal
+    document.getElementById('modalProductImg').src = product.img;
+    document.getElementById('modalProductName').innerText = product.name;
+    document.getElementById('modalProductPrice').innerText = `$${product.price.toFixed(2)}`;
+    
+    const descEl = document.getElementById('modalProductDesc');
+    if (descEl) descEl.innerText = product.desc;
+
+    // បញ្ចូលរូបភាព QR Code ទៅក្នុង Modal
+    const qrImgElement = document.getElementById('modalProductQR');
+    if (qrImgElement && product.qrCode) {
+        qrImgElement.src = product.qrCode;
+    }
+
+    // កំណត់សកម្មភាពឱ្យប៊ូតុង Add to Cart ក្នុង Modal
+    document.getElementById('modalAddToCartBtn').onclick = function(event) {
+        addToCart(event, product.id);
+        const modalElement = document.getElementById('productDetailModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+        modalInstance.hide(); // បិទ Modal វិញក្រោយពេលចុចថែមចូលកន្ត្រក
+    };
+
+    const myModal = new bootstrap.Modal(document.getElementById('productDetailModal'));
+    myModal.show();
+}
+
+// ==========================================
+// ៣. មុខងារគ្រប់គ្រងកន្ត្រកទំនិញ (Cart Logic)
+// ==========================================
+function addToCart(event, productId) {
+    if (event) event.stopPropagation(); // ការពារកុំឱ្យវាបើក Modal ជាន់គ្នាពេលចុចប៊ូតុងលើកាត
+
+    const product = Coffee.find(p => p.id === productId);
+    const existingItem = cart.find(item => item.id === productId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem('coffee_cart', JSON.stringify(cart));
+    updateBasketUI();
+}
+
+function removeFromCart(productId) {
+    const itemIndex = cart.findIndex(item => item.id === productId);
+    
+    if (itemIndex > -1) {
+        if (cart[itemIndex].quantity > 1) {
+            cart[itemIndex].quantity -= 1;
+        } else {
+            cart.splice(itemIndex, 1);
+        }
+    }
+
+    localStorage.setItem('coffee_cart', JSON.stringify(cart));
+    updateBasketUI();
+}
+
+function updateBasketUI() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const basketCountEl = document.getElementById('basket-count');
+    if (basketCountEl) basketCountEl.innerText = totalItems;
+
+    const basketContainer = document.getElementById('basket-items-container');
+    if (!basketContainer) return;
+
+    if (cart.length === 0) {
+        basketContainer.innerHTML = `<p class="text-muted text-center my-3 py-2">No items in basket</p>`;
+        return;
+    }
+
+    basketContainer.innerHTML = cart.map(item => `
+        <div class="d-flex align-items-center justify-content-between py-2 px-2 border-bottom">
+            <div class="d-flex align-items-center gap-2">
+                <img src="${item.img}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover;" class="rounded">
+                <div>
+                    <h6 class="mb-0 small fw-bold text-dark text-truncate" style="max-width: 120px;">${item.name}</h6>
+                    <span class="text-muted small">Qty: ${item.quantity}</span>
+                    <span class="text-success small ms-2 fw-semibold">$${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+            </div>
+            <button class="btn btn-sm text-danger border-0" onclick="removeFromCart(${item.id})">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </div>
+    `).join('');
+}
+
+// ==========================================
+// ៤. មុខងារ Filter តាមប្រភេទ Menu + ប្តូរពណ៌ប៊ូតុង Active
+// ==========================================
+function filterMenu(category, event) {
+    if (category === 'all') {
+        displayProducts(Coffee);
+    } else {
+        const filtered = Coffee.filter(p => p.category === category);
+        displayProducts(filtered);
+    }
+
+    // ដក Class active ពីប៊ូតុងចាស់ និងថែមទៅប៊ូតុងថ្មីដែលទើបចុច
+    const buttons = document.querySelectorAll('.d-flex.justify-content-center.gap-2 button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+}
+
+// ដំណើរការដំបូងពេលបើក Web ទំព័រដំបូង
+document.addEventListener('DOMContentLoaded', () => {
+    displayProducts();
+    updateBasketUI();
 });
