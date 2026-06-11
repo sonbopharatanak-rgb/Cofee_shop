@@ -24,9 +24,9 @@ h1, h2, h3, h4, h5, h6,
 .brand-text {
     font-family: 'Playfair Display', serif;
     letter-spacing: 0.5px;
-    
 }
 
+/* ចំណងជើងផ្នែក (Section Title) ឌីហ្សាញថ្មី */
 .section-title {
     font-size: 2.25rem;
     font-weight: 700;
@@ -45,7 +45,9 @@ h1, h2, h3, h4, h5, h6,
     border-radius: 2px;
 }
 
-
+/* ==========================================================================
+   2. Glassmorphism Navbar (របារ ម៉ឺនុយបែបកញ្ចក់ថ្លា)
+   ========================================================================== */
 .custom-navbar {
     background: rgba(255, 255, 255, 0.85) !important;
     backdrop-filter: blur(15px); /* ធ្វើឱ្យផ្ទៃខាងក្រោយព្រិលៗបែបកញ្ចក់ */
@@ -56,7 +58,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .logo-cafe {
-    height: 90px;
+    height: 42px;
     transition: var(--transition);
 }
 
@@ -65,7 +67,7 @@ h1, h2, h3, h4, h5, h6,
     font-weight: 700;
     background: linear-gradient(45deg, var(--dark), var(--primary));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; /* อักษរដេញពណ៌ (Gradient Text) */
 }
 
 .nav-link {
@@ -99,7 +101,7 @@ h1, h2, h3, h4, h5, h6,
     color: var(--primary) !important;
 }
 
-
+/* Premium Buttons on Navbar */
 .basket-btn,
 .login-btn {
     text-decoration: none;
@@ -123,7 +125,7 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: var(--shadow-md);
 }
 
-
+/* បិទរូបព្រួញ Dropdown របស់ Bootstrap ដើម្បីកុំឱ្យជល់រាងប៊ូតុង */
 .basket-btn::after {
     display: none !important;
 }
@@ -144,10 +146,12 @@ h1, h2, h3, h4, h5, h6,
     font-size: 0.75rem;
     padding: 4px 7px;
     border-radius: 50%;
-    animation: popIn 0.3s ease; 
+    animation: popIn 0.3s ease; /* លោត Animation ពេលមានលេខចូល */
 }
 
-
+/* ==========================================================================
+   2.5 បន្ថែមការដេគ័រផ្នែក Basket Dropdown List
+   ========================================================================== */
 .basket-dropdown-menu {
     min-width: 310px;
     max-height: 400px;
@@ -172,7 +176,9 @@ h1, h2, h3, h4, h5, h6,
     transform: scale(1.2) rotate(5deg);
 }
 
-
+/* ==========================================================================
+   3. Hero Carousel (ស្លាយរូបភាពធំ)
+   ========================================================================== */
 .carousel-item {
     height: 75vh;
     min-height: 450px;
@@ -182,9 +188,9 @@ h1, h2, h3, h4, h5, h6,
 .carousel-item img {
     object-fit: cover;
     height: 100%;
-    opacity: 0.6; /
+    opacity: 0.6; /* បន្ថយពន្លឺរូបភាពឱ្យមើលឃើញអក្សរច្បាស់ */
     transform: scale(1);
-    transition: transform 6s ease; 
+    transition: transform 6s ease; /* រូបភាពរីកធំតិចៗបែប Cinematic */
 }
 
 .carousel-item.active img {
@@ -212,7 +218,9 @@ h1, h2, h3, h4, h5, h6,
     animation: fadeInUp 1s ease forwards;
 }
 
-
+/* ==========================================================================
+   4. Premium Coffee Cards (កាតផលិតផលបែបទំនើប)
+   ========================================================================== */
 #coffee-container .card {
     background: var(--white);
     border: 1px solid rgba(30, 20, 10, 0.03);
@@ -221,12 +229,13 @@ h1, h2, h3, h4, h5, h6,
     transition: var(--transition);
 }
 
+/* បង្កើត Class ថ្មីសម្រាប់ឱ្យដឹងថាកាតអាចចុចបើក Popup បាន */
 .coffee-card-clickable {
     cursor: pointer;
 }
 
 #coffee-container .card:hover {
-    transform: translateY(-10px); 
+    transform: translateY(-10px); /* ហើបឡើងលើ */
     box-shadow: var(--shadow-lg) !important;
 }
 
@@ -236,7 +245,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 #coffee-container .card:hover .card-img-top {
-    transform: scale(1.03); 
+    transform: scale(1.03); /* រូបភាពរីកធំបន្តិចពេល hover */
 }
 
 .card-title {
@@ -245,7 +254,7 @@ h1, h2, h3, h4, h5, h6,
     color: var(--dark);
 }
 
-
+/* ប៊ូតុង Add to Cart ឌីហ្សាញថ្មី */
 .btn-warning {
     background: linear-gradient(135deg, #f1b814, #e0a800);
     border: none;
@@ -264,7 +273,9 @@ h1, h2, h3, h4, h5, h6,
     transform: translateY(-1px);
 }
 
-
+/* ==========================================================================
+   4.5. Styling for Product Detail Popup (Modal)
+   ========================================================================== */
 .modal-content {
     border-radius: 20px !important;
     background-color: var(--light);
@@ -290,7 +301,9 @@ h1, h2, h3, h4, h5, h6,
     font-size: 1rem;
 }
 
-
+/* ==========================================================================
+   5. Luxury Footer (ផ្នែកខាងក្រោមប្រណិត)
+   ========================================================================== */
 .footer {
     background-color: var(--dark) !important;
     color: #ebd6c2 !important;
@@ -329,7 +342,7 @@ h1, h2, h3, h4, h5, h6,
 
 .footer-box a:hover {
     color: var(--white);
-    padding-left: 5px; 
+    padding-left: 5px; /* រុញទៅស្តាំបន្តិចពេល hover */
 }
 
 /* ប៊ូតុងបណ្តាញសង្គម (Social Icons) */
@@ -357,7 +370,9 @@ h1, h2, h3, h4, h5, h6,
     font-size: 0.85rem;
 }
 
-
+/* ==========================================================================
+   6. Custom Keyframe Animations
+   ========================================================================== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -382,65 +397,67 @@ h1, h2, h3, h4, h5, h6,
         opacity: 1;
     }
 }
+/* ==========================================
+   កែសម្រួលផ្ទាំង Modal Details ឱ្យមានរាងខ្លី និងតូចជាងមុន (Pill Shape)
+   ========================================== */
 
-
-
+/* ១. កំណត់ទទឹងអតិបរមារបស់ Modal ឱ្យតូចជាងមុន (ឧទាហរណ៍៖ 400px) */
 #productDetailModal .modal-dialog {
-    max-width: 400px; 
+    max-width: 400px; /* តម្លៃដើមរបស់ Bootstrap គឺប្រហែល 500px */
     margin-right: auto;
     margin-left: auto;
 }
 
-
+/* ២. កាត់បន្ថយគម្លាត (Padding) ខាងក្នុង Modal Body ឱ្យខ្លីជាងមុន */
 #productDetailModal .modal-body {
     padding-top: 0 !important;
-    padding-bottom: 15px !important; 
+    padding-bottom: 15px !important; /* កាត់បន្ថយគម្លាតខាងក្រោម */
 }
 
-
+/* ៣. កាត់បន្ថយកម្ពស់រូបភាពផលិតផលក្នុង Modal ឱ្យខ្លីជាងមុន */
 #productDetailModal img#modalProductImg {
-    max-height: 180px !important; 
+    max-height: 180px !important; /* កាត់បន្ថយពី 250px មកត្រឹម 180px */
     width: 100%;
     object-fit: cover;
-    border-radius: 10px; 
+    border-radius: 10px; /* បន្ថែមភាពមូលតិចៗ */
     margin-bottom: 10px !important;
 }
 
-
+/* ៤. កែសម្រួលទំហំអក្សរឈ្មោះ និងតម្លៃឱ្យតូចជាងមុនបន្តិច */
 #productDetailModal #modalProductName {
-    font-size: 1.4rem !important; 
+    font-size: 1.4rem !important; /* តូចជាងមុនបន្តិច */
     margin-bottom: 2px !important;
 }
 
 #productDetailModal #modalProductPrice {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem !important; /* តូចជាងមុនបន្តិច */
     margin-bottom: 10px !important;
 }
 
-
+/* ៥. កាត់បន្ថយគម្លាត និងទំហំរបស់ប្រអប់ QR Code */
 #productDetailModal .qr-section {
-    padding: 10px !important; 
+    padding: 10px !important; /* ឱ្យដុំខ្លីជាងមុន */
     margin-bottom: 10px !important;
-    max-width: 160px !important; 
+    max-width: 160px !important; /* តូចជាងមុន */
 }
 
 #productDetailModal .qr-section p {
-    font-size: 0.8rem !important; 
+    font-size: 0.8rem !important; /* អក្សរតូចជាងមុន */
     margin-bottom: 5px !important;
 }
 
 #productDetailModal #modalProductQR {
-    width: 110px !important; 
+    width: 110px !important; /* តូចជាងមុន */
     height: 110px !important;
 }
 
-
+/* ៦. កាត់បន្ថយគម្លាត និងទំហំប៊ូតុងក្នុង Modal Footer */
 #productDetailModal .modal-footer {
     padding-top: 0 !important;
     padding-bottom: 20px !important;
 }
 
 #productDetailModal #modalAddToCartBtn {
-    padding: 8px 30px !important;
+    padding: 8px 30px !important; /* ប៊ូតុងតូចជាងមុន */
     font-size: 0.9rem;
 }
