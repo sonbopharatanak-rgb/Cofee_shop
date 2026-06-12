@@ -2,12 +2,17 @@
    1. Modern Variables & Base Reset
    ========================================================================== */
 :root {
-    --primary: #8c6239; /* ពណ៌គ្រាប់កាហ្វេប្រណិត */
-    --primary-light: #ebd6c2; /* ពណ៌ទឹកដោះគោកាហ្វេ */
-    --dark: #1e140a; /* ពណ៌កាហ្វេខ្មៅចាស់ */
-    --light: #faf8f5; /* ពណ៌ផ្ទៃខាងក្រោយបែប Cream */
+    --primary: #8c6239;
+    /* ពណ៌គ្រាប់កាហ្វេប្រណិត */
+    --primary-light: #ebd6c2;
+    /* ពណ៌ទឹកដោះគោកាហ្វេ */
+    --dark: #1e140a;
+    /* ពណ៌កាហ្វេខ្មៅចាស់ */
+    --light: #faf8f5;
+    /* ពណ៌ផ្ទៃខាងក្រោយបែប Cream */
     --white: #ffffff;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Animation បែប Smooth ល្បឿនលឿន */
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Animation បែប Smooth ល្បឿនលឿន */
     --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     --shadow-md: 0 10px 15px -3px rgba(30, 20, 10, 0.08), 0 4px 6px -2px rgba(30, 20, 10, 0.03);
     --shadow-lg: 0 20px 25px -5px rgba(30, 20, 10, 0.12), 0 10px 10px -5px rgba(30, 20, 10, 0.04);
@@ -20,7 +25,12 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .brand-text {
     font-family: 'Playfair Display', serif;
     letter-spacing: 0.5px;
@@ -50,7 +60,8 @@ h1, h2, h3, h4, h5, h6,
    ========================================================================== */
 .custom-navbar {
     background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(15px); /* ធ្វើឱ្យផ្ទៃខាងក្រោយព្រិលៗបែបកញ្ចក់ */
+    backdrop-filter: blur(15px);
+    /* ធ្វើឱ្យផ្ទៃខាងក្រោយព្រិលៗបែបកញ្ចក់ */
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     padding: 12px 0;
@@ -67,7 +78,8 @@ h1, h2, h3, h4, h5, h6,
     font-weight: 700;
     background: linear-gradient(45deg, var(--dark), var(--primary));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* อักษរដេញពណ៌ (Gradient Text) */
+    -webkit-text-fill-color: transparent;
+    /* อักษរដេញពណ៌ (Gradient Text) */
 }
 
 .nav-link {
@@ -146,7 +158,8 @@ h1, h2, h3, h4, h5, h6,
     font-size: 0.75rem;
     padding: 4px 7px;
     border-radius: 50%;
-    animation: popIn 0.3s ease; /* លោត Animation ពេលមានលេខចូល */
+    animation: popIn 0.3s ease;
+    /* លោត Animation ពេលមានលេខចូល */
 }
 
 /* ==========================================================================
@@ -188,9 +201,11 @@ h1, h2, h3, h4, h5, h6,
 .carousel-item img {
     object-fit: cover;
     height: 100%;
-    opacity: 0.6; /* បន្ថយពន្លឺរូបភាពឱ្យមើលឃើញអក្សរច្បាស់ */
+    opacity: 0.6;
+    /* បន្ថយពន្លឺរូបភាពឱ្យមើលឃើញអក្សរច្បាស់ */
     transform: scale(1);
-    transition: transform 6s ease; /* រូបភាពរីកធំតិចៗបែប Cinematic */
+    transition: transform 6s ease;
+    /* រូបភាពរីកធំតិចៗបែប Cinematic */
 }
 
 .carousel-item.active img {
@@ -235,7 +250,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 #coffee-container .card:hover {
-    transform: translateY(-10px); /* ហើបឡើងលើ */
+    transform: translateY(-10px);
+    /* ហើបឡើងលើ */
     box-shadow: var(--shadow-lg) !important;
 }
 
@@ -245,7 +261,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 #coffee-container .card:hover .card-img-top {
-    transform: scale(1.03); /* រូបភាពរីកធំបន្តិចពេល hover */
+    transform: scale(1.03);
+    /* រូបភាពរីកធំបន្តិចពេល hover */
 }
 
 .card-title {
@@ -342,7 +359,8 @@ h1, h2, h3, h4, h5, h6,
 
 .footer-box a:hover {
     color: var(--white);
-    padding-left: 5px; /* រុញទៅស្តាំបន្តិចពេល hover */
+    padding-left: 5px;
+    /* រុញទៅស្តាំបន្តិចពេល hover */
 }
 
 /* ប៊ូតុងបណ្តាញសង្គម (Social Icons) */
@@ -362,7 +380,8 @@ h1, h2, h3, h4, h5, h6,
 .social-icons a:hover {
     background-color: var(--primary);
     color: var(--white) !important;
-    transform: translateY(-3px) rotate(360deg); /* វិលជុំវិញខ្លួនឯង */
+    transform: translateY(-3px)
+    /* វិលជុំវិញខ្លួនឯង */
 }
 
 .footer-bottom {
@@ -378,6 +397,7 @@ h1, h2, h3, h4, h5, h6,
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -389,9 +409,11 @@ h1, h2, h3, h4, h5, h6,
         transform: scale(0.6);
         opacity: 0;
     }
+
     80% {
         transform: scale(1.2);
     }
+
     100% {
         transform: scale(1);
         opacity: 1;
@@ -400,7 +422,8 @@ h1, h2, h3, h4, h5, h6,
 
 /* ១. កំណត់ទទឹងអតិបរមារបស់ Modal ឱ្យតូចជាងមុន (ឧទាហរណ៍៖ 400px) */
 #productDetailModal .modal-dialog {
-    max-width: 400px; /* តម្លៃដើមរបស់ Bootstrap គឺប្រហែល 500px */
+    max-width: 400px;
+    /* តម្លៃដើមរបស់ Bootstrap គឺប្រហែល 500px */
     margin-right: auto;
     margin-left: auto;
 }
@@ -408,43 +431,52 @@ h1, h2, h3, h4, h5, h6,
 /* ២. កាត់បន្ថយគម្លាត (Padding) ខាងក្នុង Modal Body ឱ្យខ្លីជាងមុន */
 #productDetailModal .modal-body {
     padding-top: 0 !important;
-    padding-bottom: 15px !important; /* កាត់បន្ថយគម្លាតខាងក្រោម */
+    padding-bottom: 15px !important;
+    /* កាត់បន្ថយគម្លាតខាងក្រោម */
 }
 
 /* ៣. កាត់បន្ថយកម្ពស់រូបភាពផលិតផលក្នុង Modal ឱ្យខ្លីជាងមុន */
 #productDetailModal img#modalProductImg {
-    max-height: 180px !important; /* កាត់បន្ថយពី 250px មកត្រឹម 180px */
+    max-height: 180px !important;
+    /* កាត់បន្ថយពី 250px មកត្រឹម 180px */
     width: 100%;
     object-fit: cover;
-    border-radius: 10px; /* បន្ថែមភាពមូលតិចៗ */
+    border-radius: 10px;
+    /* បន្ថែមភាពមូលតិចៗ */
     margin-bottom: 10px !important;
 }
 
 /* ៤. កែសម្រួលទំហំអក្សរឈ្មោះ និងតម្លៃឱ្យតូចជាងមុនបន្តិច */
 #productDetailModal #modalProductName {
-    font-size: 1.4rem !important; /* តូចជាងមុនបន្តិច */
+    font-size: 1.4rem !important;
+    /* តូចជាងមុនបន្តិច */
     margin-bottom: 2px !important;
 }
 
 #productDetailModal #modalProductPrice {
-    font-size: 1.2rem !important; /* តូចជាងមុនបន្តិច */
+    font-size: 1.2rem !important;
+    /* តូចជាងមុនបន្តិច */
     margin-bottom: 10px !important;
 }
 
 /* ៥. កាត់បន្ថយគម្លាត និងទំហំរបស់ប្រអប់ QR Code */
 #productDetailModal .qr-section {
-    padding: 10px !important; /* ឱ្យដុំខ្លីជាងមុន */
+    padding: 10px !important;
+    /* ឱ្យដុំខ្លីជាងមុន */
     margin-bottom: 10px !important;
-    max-width: 160px !important; /* តូចជាងមុន */
+    max-width: 160px !important;
+    /* តូចជាងមុន */
 }
 
 #productDetailModal .qr-section p {
-    font-size: 0.8rem !important; /* អក្សរតូចជាងមុន */
+    font-size: 0.8rem !important;
+    /* អក្សរតូចជាងមុន */
     margin-bottom: 5px !important;
 }
 
 #productDetailModal #modalProductQR {
-    width: 110px !important; /* តូចជាងមុន */
+    width: 110px !important;
+    /* តូចជាងមុន */
     height: 110px !important;
 }
 
@@ -455,6 +487,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 #productDetailModal #modalAddToCartBtn {
-    padding: 8px 30px !important; /* ប៊ូតុងតូចជាងមុន */
+    padding: 8px 30px !important;
+    /* ប៊ូតុងតូចជាងមុន */
     font-size: 0.9rem;
 }

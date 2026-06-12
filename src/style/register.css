@@ -1,0 +1,61 @@
+body {
+    background-image: url('https://i.pinimg.com/736x/4b/5a/e2/4b5ae2d18a011716559ca9e9ff6b57af.jpg');
+    font-family: Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* The container centered and limited to screen size */
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Registration card with a semi-transparent white background */
+.register-card {
+    width: 100%;
+    max-width: 480px;
+    /* background: rgba(255, 255, 255, 0.95);  */
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+h2 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Standardized form heights */
+.form-control,
+.form-select {
+    height: 40px;
+    border-radius: 8px;
+}
+
+.btn-primary {
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-label {
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    font-size: 14px;
+    color: #495057;
+}
+
+/* Consistent spacing for elements */
+.mb-custom {
+    margin-bottom: 16px;
+}

@@ -1,0 +1,160 @@
+ /* Base Environment Setup Layout rules */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            /* Using a scenic dark moody plantation mountain view as background */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+                url('https://i.pinimg.com/736x/18/52/3c/18523cced720d28c0777df94dffdb4ec.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Centered login form panel container wrapper block */
+        .login-card-wrapper {
+            width: 100%;
+            max-width: 440px;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .form-title {
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 35px;
+            letter-spacing: -0.5px;
+        }
+
+        .input-label {
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 400;
+        }
+
+        .form-group-custom {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        /* Absolute placement utility for internal form vector indicators */
+        .form-group-custom i {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaaaaa;
+            font-size: 1rem;
+        }
+
+        .form-group-custom input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            /* Completely rounded oval field profile */
+            padding: 14px 24px 14px 54px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        /* Dynamic focus visibility highlight settings adjustments */
+        .form-group-custom input:focus {
+            border-color: #5c3214;
+            background: rgba(255, 255, 255, 0.09);
+            box-shadow: 0 0 8px rgba(92, 50, 20, 0.3);
+        }
+
+        /* Placeholder coloring override rule logic */
+        .form-group-custom input::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Bottom Row Option Elements Structure grid configuration rules */
+        .action-options-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 35px;
+        }
+
+        .remember-checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #dddddd;
+        }
+
+        .remember-checkbox-container input {
+            width: 15px;
+            height: 15px;
+            accent-color: #4a2711;
+            cursor: pointer;
+        }
+
+        .forgot-password-trigger {
+            color: #dddddd;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .forgot-password-trigger:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Deep Coffee-Brown Pill submit action element button definitions */
+        .btn-submit-coffee {
+            width: 100%;
+            background-color: #43220c;
+            /* Deep rich roasted brown hex accent */
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-bottom: 30px;
+        }
+
+        .btn-submit-coffee:hover {
+            background-color: #562e12;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit-coffee:active {
+            transform: translateY(0);
+        }
+
+        /* Redirection routing descriptive text styling */
+        .signup-redirect-footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+
+        .signup-redirect-footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-redirect-footer a:hover {
+            text-decoration: underline;
+        }
