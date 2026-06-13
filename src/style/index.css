@@ -59,7 +59,7 @@ h6,
    2. Glassmorphism Navbar (របារ ម៉ឺនុយបែបកញ្ចក់ថ្លា)
    ========================================================================== */
 .custom-navbar {
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(239, 233, 233, 0.85) !important;
     backdrop-filter: blur(15px);
     /* ធ្វើឱ្យផ្ទៃខាងក្រោយព្រិលៗបែបកញ្ចក់ */
     -webkit-backdrop-filter: blur(15px);
