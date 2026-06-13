@@ -1,25 +1,103 @@
- body {
-     height: 100vh;
-     width: 100vw;
-     /* Using a scenic dark moody plantation mountain view as background */
-     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-         url('https://i.pinimg.com/736x/38/8e/64/388e6440cb45dd4a9fd54f156b3e3c4f.jpg') no-repeat center center;
-     background-size: cover;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     padding: 20px;
- }
- /* Registration card with a semi-transparent white background */
- .card {
-     width: 100%;
-     max-width: 480px;
-     background-color:#513C26;
-     padding: 35px;
-     border-radius: 15px;
-     
-    
- }
- #registrationForm{
-    background-color: none;
- }
+body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px 0;
+        }
+
+        /* @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        } */
+
+        /* Glassmorphism Card Effect */
+        .card {
+            border: none;
+            border-radius: 16px;
+            background: rgba(240, 234, 234, 0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 2.5rem 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Typography Styling */
+        h2 {
+            color: #333;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: #6c757d;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Sleek Input Fields */
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0.65rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.2s ease-in-out;
+            background-color: #f8f9fa;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #fff;
+            border-color: #e73c7e;
+            box-shadow: 0 0 0 0.25rem rgba(231, 60, 126, 0.15);
+            color: #212529;
+        }
+
+        /* Dynamic Register Button */
+        .btn-primary {
+            background: linear-gradient(135deg, #e73c7e, #23a6d5);
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 60, 126, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #23a6d5, #e73c7e);
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(35, 166, 213, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* Link Styling */
+        .text-decoration-none {
+            color: #e73c7e;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .text-decoration-none:hover {
+            color: #23a6d5;
+            text-decoration: underline !important;
+        }
