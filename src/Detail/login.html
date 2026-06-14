@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../style/login.css">
-
-
 </head>
 
 <body>
@@ -45,6 +42,8 @@
             </div>
 
             <button type="submit" class="btn-submit-coffee">Login</button>
+            
+            <p id="message" class="text-center small mt-2"></p>
 
             <div class="signup-redirect-footer">
                 Not a member? <a href="register.html">Sign up now</a>
@@ -55,13 +54,44 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Form Submission processing pipeline interceptor handler logic routines
-        function login(event) {
-            event.preventDefault();
-            const targetMail = document.getElementById("userEmail").value;
-            alert(`Authentication Request received for system validation token: ${targetMail}`);
+        // FIXED: Replaced split logic streams with a single, dedicated execution function called by form onsubmit
+        function executeLoginValidation(e) {
+            // Stop the page from reloading automatically
+            e.preventDefault();
+
+            // 1. Get values mapped perfectly to actual input IDs
+            const emailInput = document.getElementById("userEmail").value.trim();
+            const passwordInput = document.getElementById("userPassword").value.trim();
+            const message = document.getElementById("message");
+
+            // 2. Get the registered user list array from localStorage
+            const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+            // 3. Match inputs against data store instances 
+            const validUser = savedUsers.find(user => user.email === emailInput && user.password === passwordInput);
+
+            if (validUser) {
+                // SUCCESS
+                if (message) {
+                    message.textContent = "";
+                }
+                
+                alert("Login successful! Redirecting...");
+
+                // 4. Redirect to the index page safely out of subfolder
+                window.location.href = "/index.html";
+            } else {
+                // FAIL
+                if (message) {
+                    message.textContent = "អ៊ីមែល ឬ ពាក្យសម្ងាត់មិនត្រឹមត្រូវទេ! (Incorrect email or password)";
+                    message.className = "text-danger text-center small mt-2";
+                } else {
+                    alert("អ៊ីមែល ឬ ពាក្យសម្ងាត់មិនត្រឹមត្រូវទេ!");
+                }
+            }
         }
     </script>
+
 </body>
 
 </html>
