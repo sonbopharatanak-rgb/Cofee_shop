@@ -1,103 +1,153 @@
-body {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px 0;
-        }
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* color: #4e3629; */
+    /* Espresso */
+    background-image: url('https://i.pinimg.com/736x/18/52/3c/18523cced720d28c0777df94dffdb4ec.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 
-        /* @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        } */
 
-        /* Glassmorphism Card Effect */
-        .card {
-            border: none;
-            border-radius: 16px;
-            background: rgba(240, 234, 234, 0.92);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            padding: 2.5rem 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
 
-        /* Typography Styling */
-        h2 {
-            color: #333;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+    background-color: transparent;
+    /* Remove body bg to show background image */
+}
 
-        p {
-            color: #6c757d;
-        }
 
-        .form-label {
-            font-weight: 600;
-            color: #495057;
-            font-size: 0.9rem;
-            margin-bottom: 0.4rem;
-        }
+/* ----------------------------------------------------------- */
+/* --- Transparent Card with Blur and Glow --- */
+/* ----------------------------------------------------------- */
+.card {
+    /* លុបពណ៌ផ្ទៃក្រោយចេញ និងធ្វើឱ្យមានតម្លាភាព (Transparent background) */
+    background-color: rgba(255, 255, 255, 0.45);
+    /* Very light, very transparent */
+    /* បង្កើតផលព្រាលនៅពីក្រោយកាត (Glassmorphism effect) */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    /* អត់មានបន្ទាត់ព័ទ្ធជុំវិញ */
+    border: none;
+    /* កាំរង្វង់រលូន */
+    border-radius: 20px;
+    /* ស្រមោលទន់ភ្លន់ លាយជាមួយពន្លឺព្រាលជុំវិញ */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(221, 184, 146, 0.3) inset;
+    padding: 35px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transition: box-shadow 0.3s ease;
+}
 
-        /* Sleek Input Fields */
-        .form-control, .form-select {
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            padding: 0.65rem 1rem;
-            font-size: 0.95rem;
-            transition: all 0.2s ease-in-out;
-            background-color: #f8f9fa;
-        }
+.card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25), 0 0 50px rgba(221, 184, 146, 0.4) inset;
+}
 
-        .form-control:focus, .form-select:focus {
-            background-color: #fff;
-            border-color: #e73c7e;
-            box-shadow: 0 0 0 0.25rem rgba(231, 60, 126, 0.15);
-            color: #212529;
-        }
+/* ចំណងជើង និងអត្ថបទពន្យល់ */
+h2 {
+    color: #2e1c12;
+    /* Darker Espresso for contrast on glass */
+    font-weight: 800;
+    /* Extra bold */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    /* Text light shadow for clarity */
+}
 
-        /* Dynamic Register Button */
-        .btn-primary {
-            background: linear-gradient(135deg, #e73c7e, #23a6d5);
-            border: none;
-            border-radius: 8px;
-            padding: 0.75rem;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(231, 60, 126, 0.3);
-        }
+p {
+    color: #3b2a1a;
+    /* Richer Milk chocolate */
+    font-size: 1.05rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
 
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #23a6d5, #e73c7e);
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(35, 166, 213, 0.4);
-        }
+/* ឡាបែល (Labels) */
+.form-label {
+    font-weight: 700;
+    color: #2e1c12;
+    font-size: 0.95rem;
+    margin-bottom: 7px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+}
 
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
+/* input/select styles - semi-transparent, caramel border */
+.form-control,
+.form-select {
+    border: 2px solid rgba(221, 184, 146, 0.7);
+    /* Caramel with transparency */
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #2e1c12;
+    /* ផ្ទៃក្រោយស្រាលព្រាលៗសម្រាប់ input ឱ្យឃើញអក្សរច្បាស់ */
+    background-color: rgba(255, 253, 250, 0.6);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
 
-        /* Link Styling */
-        .text-decoration-none {
-            color: #e73c7e;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
+/* ពេលចុចចំលើប្រអប់ (Focus) */
+.form-control:focus,
+.form-select:focus {
+    border-color: #7f5539;
+    /* Darker Coffee Brown */
+    box-shadow: 0 0 0 0.25rem rgba(127, 85, 57, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 255, 255, 0.8);
+}
 
-        .text-decoration-none:hover {
-            color: #23a6d5;
-            text-decoration: underline !important;
-        }
+/* ពណ៌អក្សរព្រាលៗក្នុងប្រអប់ (Placeholder) */
+.form-control::placeholder {
+    color: #a78670;
+}
+
+/* ប៊ូតុងចុះឈ្មោះ (Register Button) - Coffee/Espresso Blend */
+.btn-primary {
+    background-color: #613e28;
+    /* Coffee Brown */
+    background-image: linear-gradient(135deg, #7f5539, #4e3629);
+    /* Caramel to Espresso gradient */
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4e3629;
+    /* Darker Espresso on hover */
+    background-image: linear-gradient(135deg, #6d4b31, #2e1c12);
+    /* Richer gradient */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: scale(0.97) translateY(0px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* លីង Login */
+a.text-decoration-none {
+    color: #7f5539;
+    font-weight: 700;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+a.text-decoration-none:hover {
+    color: #2e1c12;
+    /* Espresso */
+    text-decoration: underline !important;
+}

@@ -11,28 +11,29 @@
 </head>
 
 <body>
-    <div class="container">
+
+    <div class="container h-100 d-flex align-items-center">
         <div class="row justify-content-center w-100 m-0">
-            <div class="col-md-7 col-lg-5">
+            <div class="col-md-7 col-lg-5 col-xl-5">
                 <div class="card">
                     <form class="form" id="registrationForm">
-                        <div class="text-center mb-1">
+                        <div class="text-center mb-3">
                             <h2>Create Account</h2>
-                            <p>Fill out the form below to register.</p>
+                            <!-- <p>Fill out the form below to register.</p> -->
                         </div>
 
-                        <div class="row mb-2">
-                            <div class="col-6">
+                        <div class="row mb-3">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label class="form-label">First Name</label>
-                                <input type="text" id="firstName" class="form-control" placeholder="First Name" required>
+                                <input type="text" id="firstName" class="form-control" placeholder="Jane" required>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" id="lastName" class="form-control" placeholder="Last Name" required>
+                                <input type="text" id="lastName" class="form-control" placeholder="Doe" required>
                             </div>
                         </div>
 
-                        <div class="mb-2">
+                        <div class="mb-3">
                             <label class="form-label">Gender</label>
                             <select id="gender" class="form-select" required>
                                 <option value="" selected disabled>Select Gender</option>
@@ -42,19 +43,21 @@
                             </select>
                         </div>
 
-                        <div class="mb-2">
+                        <div class="mb-3">
                             <label class="form-label">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="example@gmail.com" required>
+                            <input type="email" id="email" class="form-control"
+                                placeholder="jane.doe@coffeeplantation.com" required>
                         </div>
 
-                        <div class="mb-2">
+                        <div class="mb-4">
                             <label class="form-label">Password</label>
-                            <input type="password" id="password" class="form-control" placeholder="Enter Password" required>
+                            <input type="password" id="password" class="form-control" placeholder="Min. 8 characters"
+                                required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 mb-2">Register</button>
+                        <button type="submit" class="btn btn-primary w-100 mb-3">Register</button>
 
-                        <p class="text-center mt-1 mb-0 small">
+                        <p class="text-center mt-2 mb-0 small">
                             Already have an account? <a href="login.html" class="text-decoration-none">Login</a>
                         </p>
                     </form>
