@@ -1,0 +1,140 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fb; /* Light background */
+    /* Optional: Simulating the blue background blobs from your image */
+    background-image: radial-gradient(circle at 80% 20%, #2952ff 10%, transparent 40%),
+                      radial-gradient(circle at 40% 100%, #2952ff 15%, transparent 45%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Card Container */
+.login-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo Circle */
+.logo-circle {
+    width: 45px;
+    height: 45px;
+    border: 8px solid #73e6e1; /* Teal/Cyan color */
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Heading */
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 35px;
+}
+
+form {
+    width: 100%;
+}
+
+/* Input Fields Wrapper */
+.input-group {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 25px;
+    padding: 10px 0;
+    transition: border-color 0.3s ease;
+}
+
+/* Active style matching your image (blue line for filled/selected) */
+.input-group.active {
+    border-bottom-color: #a4b5ff;
+}
+
+.input-group i {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-right: 15px;
+    width: 20px;
+}
+
+/* Changes icon color when line is blue */
+.input-group.active i {
+    color: #2952ff;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    color: #333;
+}
+
+.input-group input::placeholder {
+    color: #ccc;
+}
+
+/* Login Button */
+.login-btn {
+    background-color: #2952ff; /* Vibrant blue */
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    transition: background-color 0.2s ease;
+}
+
+.login-btn:hover {
+    background-color: #1a40e3;
+}
+
+/* Footer Links */
+.form-footer p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.signup-link {
+    color: #2952ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.forgot-link {
+    display: block;
+    color: #b5b5b5;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-link:hover {
+    color: #888;
+}
