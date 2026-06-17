@@ -188,3 +188,4 @@ function deleteItemHandler(id, element) {
 
 // Bootstrap Entry Lifecycle Call
 window.addEventListener('DOMContentLoaded', initDashboard);
+

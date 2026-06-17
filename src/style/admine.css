@@ -74,8 +74,11 @@ main {
     }
 }
 .h2{
-    margin-left: 15vh;
+    margin-left: 8vh;
 }
 .icon-cafe{
-    margin-left: 15vh;
+    margin-left: 18vh;
+}
+.tab-pane{
+    margin-right: 10vh;
 }
