@@ -41,47 +41,97 @@ function viewProductDetails(productId) {
     const product = Coffee.find(p => p.id === productId);
     if (!product) return;
 
-    // បញ្ចូលរូបភាព និងព័ត៌មានទៅក្នុង Modal
+    // ១. បញ្ចូលទិន្នន័យទៅក្នុង Modal ទី១ (Product Card)
     document.getElementById('modalProductImg').src = product.img;
     document.getElementById('modalProductName').innerText = product.name;
     document.getElementById('modalProductPrice').innerText = `$${product.price.toFixed(2)}`;
+    document.getElementById('modalProductDesc').innerText = product.desc || '';
     
-    const descEl = document.getElementById('modalProductDesc');
-    if (descEl) descEl.innerText = product.desc;
+    const qtyInput = document.getElementById('productQty');
+    if (qtyInput) qtyInput.value = 1;
 
-    // បញ្ចូលរូបភាព QR Code ទៅក្នុង Modal
-    const qrImgElement = document.getElementById('modalProductQR');
-    if (qrImgElement && product.qrCode) {
-        qrImgElement.src = product.qrCode;
-    }
+    // ២. នៅពេលចុចប៊ូតុង Buy Now
+    document.getElementById('modalBuyNowBtn').onclick = function(event) {
+        if (event) event.stopPropagation();
 
-    // កំណត់សកម្មភាពឱ្យប៊ូតុង Add to Cart ក្នុង Modal
-    document.getElementById('modalAddToCartBtn').onclick = function(event) {
-        addToCart(event, product.id);
-        const modalElement = document.getElementById('productDetailModal');
-        const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
-        modalInstance.hide(); // បិទ Modal វិញក្រោយពេលចុចថែមចូលកន្ត្រក
+        const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+        const totalAmount = product.price * quantity;
+
+        // បិទ Modal ទី១ (Product Card)
+        const productModal = bootstrap.Modal.getInstance(document.getElementById('productCardModal'));
+        if (productModal) productModal.hide();
+
+        // ៣. បញ្ចូលរូបភាព QR Code និងតម្លៃសរុបទៅក្នុង Modal ទី២
+        document.getElementById('modalPaymentQR').src = product.qrCode || 'ទម្រង់_URL_QR_Code_ទូទៅ';
+        document.getElementById('paymentTotalAmount').innerText = `$${totalAmount.toFixed(2)}`;
+
+        // កំណត់ឱ្យបង្ហាញផ្នែក QR និងលាក់ Success ជាមុនសិន
+        document.getElementById('qrPaymentSection').classList.remove('d-none');
+        document.getElementById('successSection').classList.add('d-none');
+        document.getElementById('btnClosePayment').classList.remove('d-none'); 
+
+        // បើក Modal ទី២ (Payment Modal)
+        const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+        paymentModal.show();
+
+        // ៤. នៅពេលអ្នកទិញចុចប៊ូតុង Verify Payment
+        document.getElementById('modalVerifyBtn').onclick = function(e) {
+            // លាក់ផ្នែក QR និងប៊ូតុងខ្វែងបិទផ្ទាំង
+            document.getElementById('qrPaymentSection').classList.add('d-none');
+            document.getElementById('btnClosePayment').classList.add('d-none'); 
+            
+            // បង្ហាញផ្នែក Success 
+            document.getElementById('successSection').classList.remove('d-none');
+
+            // ៥. នាំយកផលិតផលទៅដាក់ក្នុង basket ទៅតាមចំនួនដែលបានជ្រើសរើស
+            addToCartWithQty(product.id, quantity);
+        };
     };
 
-    const myModal = new bootstrap.Modal(document.getElementById('productDetailModal'));
+    // បើក Modal ទី១
+    const myModal = bootstrap.Modal.getInstance(document.getElementById('productCardModal')) || new bootstrap.Modal(document.getElementById('productCardModal'));
     myModal.show();
 }
+    // 4. Open the modal using the correct ID
+  
+document.addEventListener("DOMContentLoaded", function () {
+    const btnPlus = document.getElementById('btnPlus');
+    const btnMinus = document.getElementById('btnMinus');
+    const qtyInput = document.getElementById('productQty');
 
+    if (btnPlus && btnMinus && qtyInput) {
+        btnPlus.onclick = function() {
+            let currentQty = parseInt(qtyInput.value) || 1;
+            qtyInput.value = currentQty + 1;
+        };
+
+        btnMinus.onclick = function() {
+            let currentQty = parseInt(qtyInput.value) || 1;
+            if (currentQty > 1) {
+                qtyInput.value = currentQty - 1;
+            }
+        };
+    }
+});
 // ==========================================
 // ៣. មុខងារគ្រប់គ្រងកន្ត្រកទំនិញ (Cart Logic)
 // ==========================================
-function addToCart(event, productId) {
-    if (event) event.stopPropagation(); // ការពារកុំឱ្យវាបើក Modal ជាន់គ្នាពេលចុចប៊ូតុងលើកាត
-
+function addToCartWithQty(productId, quantity) {
     const product = Coffee.find(p => p.id === productId);
+    if (!product) return;
+
+    // ស្វែងរកមើលថាតើមានផលិតផលនេះក្នុងកន្ត្រករួចហើយឬនៅ
     const existingItem = cart.find(item => item.id === productId);
 
     if (existingItem) {
-        existingItem.quantity += 1;
+        // បើមានហើយ គឺបូកបន្ថែមចំនួនថ្មីចូល
+        existingItem.quantity += quantity;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        // បើមិនទាន់មាន គឺរុញចូលទៅក្នុង Array ជាមួយចំនួនដែលបានរើស
+        cart.push({ ...product, quantity: quantity });
     }
 
+    // រក្សាទុកក្នុង LocalStorage និង Update UI កន្ត្រកអីវ៉ាន់
     localStorage.setItem('coffee_cart', JSON.stringify(cart));
     updateBasketUI();
 }

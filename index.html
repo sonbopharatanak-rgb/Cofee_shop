@@ -118,33 +118,87 @@
         <div class="row g-4" id="coffee-container"></div>
     </section>
 
-    <div class="modal fade" id="productDetailModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-header border-bottom-0 pb-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center pt-0">
-                    <img id="modalProductImg" src="" alt="" class="img-fluid rounded mb-3 shadow-sm" style="max-height: 250px; width: 100%; object-fit: cover;">
-                    <h3 id="modalProductName" class="fw-bold mb-1 text-dark"></h3>
-                    <h4 id="modalProductPrice" class="text-success fw-semibold mb-3"></h4>
+    <!--  -->
+   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productCardModal">
+  Open Product Card
+</button>
+
+<div class="modal fade" id="productCardModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg p-3" style="border-radius: 20px;">
+            
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            
+            <div class="modal-body">
+                <div class="row g-4 align-items-center">
                     
-                    <p id="modalProductDesc" class="text-muted small px-3 mb-4"></p>
-                    
-                    <div class="qr-section p-3 mx-auto mb-3 rounded-3" style="background: #fdfbf7; max-width: 190px; border: 1px dashed #ced4da;">
-                        <p class="small fw-bold text-muted mb-2"><i class="fa-solid fa-qrcode me-1"></i> Scan to Pay</p>
-                        <img id="modalProductQR" src="" alt="Product QR Code" class="img-fluid rounded shadow-sm" style="width: 130px; height: 130px;">
+                    <div class="col-md-5 text-center">
+                        <img id="modalProductImg" src="" alt="Product" class="img-fluid" style="max-height: 280px; object-fit: contain;">
                     </div>
-                </div>
-                <div class="modal-footer border-top-0 justify-content-center pb-4">
-                    <button type="button" class="btn btn-warning px-5 py-2 fw-bold text-white" id="modalAddToCartBtn">
-                        <i class="fa-solid fa-cart-plus me-2"></i>Add to Cart
-                    </button>
+                    
+                    <div class="col-md-7 d-flex flex-column justify-content-between" style="min-height: 240px;">
+                        <div>
+                            <h3 id="modalProductName" class="fw-bold text-dark mb-1" style="font-size: 1.6rem;"></h3>
+                            <h4 id="modalProductPrice" class="text-success fw-semibold mb-2" style="font-size: 1.25rem;"></h4>
+                            <p id="modalProductDesc" class="text-muted lh-base" style="font-size: 0.95rem; max-width: 90%;"></p>
+                        </div>
+                        
+                        <div class="d-flex align-items-center gap-3 mt-4">
+                            <div class="d-flex align-items-center border rounded-3 p-1 bg-white shadow-sm">
+                                <button class="btn btn-link text-secondary p-1 px-2 m-0" type="button" id="btnMinus">
+                                    <i class="fa-solid fa-minus fa-xs"></i>
+                                </button>
+                                <input type="text" class="form-control text-center fw-bold border-0 p-0" id="productQty" value="1" readonly style="width: 30px; background: transparent; pointer-events: none;">
+                                <button class="btn btn-link text-secondary p-1 px-2 m-0" type="button" id="btnPlus">
+                                    <i class="fa-solid fa-plus fa-xs"></i>
+                                </button>
+                            </div>
+                            
+                            <button type="button" class="btn btn-primary flex-grow-1 py-2 fw-semibold text-white" id="modalBuyNowBtn" style="background-color: #2b66f5; border-color: #2b66f5; border-radius: 10px; height: 42px;">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
         </div>
     </div>
+</div>
+<!-- QR -->
+ <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+        <div class="modal-content border-0 shadow-lg p-4 text-center" style="border-radius: 20px;">
+            
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" id="btnClosePayment"></button>
+            
+            <div id="qrPaymentSection">
+                <h4 class="fw-bold text-dark mb-3">ស្កេនដើម្បីទូទាត់ប្រាក់</h4>
+                <div class="p-3 mx-auto mb-3 rounded-3" style="background: #fdfbf7; max-width: 220px; border: 1px dashed #ced4da;">
+                    <img id="modalPaymentQR" src="" alt="Payment QR Code" class="img-fluid rounded shadow-sm" style="width: 180px; height: 180px;">
+                </div>
+                <p class="text-muted small mb-3">សូមពិនិត្យទឹកប្រាក់៖ <span id="paymentTotalAmount" class="text-danger fw-bold"></span></p>
+                
+                <button type="button" class="btn btn-primary w-100 py-2 fw-bold mb-2" id="modalVerifyBtn" style="border-radius: 10px; background-color: #2b66f5;">
+                    <i class="fa-solid fa-shield-check me-2"></i>Verify Payment
+                </button>
+                <span class="text-muted small d-block"><i class="fa-solid fa-spinner fa-spin me-1"></i> រង់ចាំការផ្ទៀងផ្ទាត់ពីអ្នក</span>
+            </div>
 
+            <div id="successSection" class="d-none py-4">
+                <div class="mb-3">
+                    <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem;"></i>
+                </div>
+                <h3 class="fw-bold text-success mb-2">Success!</h3>
+                <p class="text-muted">ការទិញ និងបង់ប្រាក់របស់អ្នកបានជោគជ័យ!</p>
+                <button type="button" class="btn btn-success w-100 mt-3 py-2 fw-bold" style="border-radius: 10px;" data-bs-dismiss="modal">រួចរាល់</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- footer -->
     <footer id="Contact" class="footer mt-5" style="padding: 40px 0;">
         <div class="container d-flex flex-wrap justify-content-between gap-4">
             <div class="footer-box" style="flex: 1; min-width: 250px;">
