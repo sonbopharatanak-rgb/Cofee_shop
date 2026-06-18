@@ -62,7 +62,7 @@ function renderAllProducts() {
     container.innerHTML = '';
 
     Coffee.forEach(item => {
-        // Determine layout visibility by modern filter parameters
+
         if (targetFilterCategory !== 'all' && item.category !== targetFilterCategory) return;
 
         const tr = document.createElement('tr');
@@ -90,6 +90,49 @@ function renderAllProducts() {
                 `;
         container.appendChild(tr);
     });
+}
+// greate newproducts
+function addNewProduct() {
+    // 1. Grab values from the modal form inputs
+    const imgValue = document.getElementById('prodImg').value;
+    const nameValue = document.getElementById('prodName').value;
+    const categoryValue = document.getElementById('prodCategory').value;
+    const priceValue = parseFloat(document.getElementById('prodPrice').value);
+
+    // Simple validation rule: basic fields shouldn't be empty
+    if (!nameValue || !priceValue) {
+        alert("Please enter a valid product name and price.");
+        return;
+    }
+
+    // 2. Generate a new unique ID (finds max ID in array and adds 1)
+    const nextId = Coffee.length > 0 ? Math.max(...Coffee.map(item => item.id)) + 1 : 1;
+
+    // 3. Create the new item object structure matches your rendering pattern
+    const newProduct = {
+        id: nextId,
+        img: imgValue || 'https://placehold.co/50x50?text=Drink', // fallback if empty
+        name: nameValue,
+        desc: "Freshly added item", // placeholder description
+        category: categoryValue,
+        price: priceValue,
+        qrCode: 'https://placehold.co/50x50?text=QR' // placeholder QR code
+    };
+
+    // 4. Push into your main data array
+    Coffee.push(newProduct);
+
+    // 5. Instantly refresh the UI using your existing function
+    renderAllProducts();
+
+    // 6. Reset form fields and close Bootstrap modal cleanly
+    document.getElementById('newProductForm').reset();
+
+    const modalElement = document.getElementById('addProductModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
+        modalInstance.hide();
+    }
 }
 
 // Section 2 Renderer: Storage Layout (Calculated Stock Assignments)
